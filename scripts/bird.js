@@ -62,9 +62,12 @@ const wingcolor = [
 	"grey",
 
 ]
-let bird;
 
+let bird;
 function drawBird() {
+	if (bird) {
+  	freeGeometry(bird);
+	}  
 	tailExist = random([0, 1]);
 	browsExist = random([0, 1]);
 	extraExist = random([0, 1, 2]);
