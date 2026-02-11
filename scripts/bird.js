@@ -204,7 +204,6 @@ function draw() {
   //begin vibecoded section
 	targetRotY = map(mouseX, 0, width, -PI/4, PI/4);
   targetRotX = map(mouseY, 0, height, -PI/6, PI/6);
-
   currentRotX = lerp(currentRotX, targetRotX, 0.1);
   currentRotY = lerp(currentRotY, targetRotY, 0.1);
 
