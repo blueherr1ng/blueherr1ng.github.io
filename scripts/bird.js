@@ -191,27 +191,28 @@ function drawBird() {
 
 function setup() {
 	background(90, 180, 230);
-	createCanvas(500, 500, WEBGL);
-	//debugMode();
+	createCanvas(windowWidth * 0.66, windowHeight, WEBGL);
+	debugMode();
 	drawHat();
+  rotateX(PI/2);
 	drawBird();
 }
 
 function draw() {
 	background(90, 180, 230);
 	noStroke();
-  
+
   //begin vibecoded section
-	targetRotY = map(mouseX, 0, width, -PI/4, PI/4);
-  targetRotX = map(mouseY, 0, height, -PI/6, PI/6);
+  let maxY = PI / 8;   // horizontal tilt limit
+  let maxX = PI / 10;  // vertical tilt limit
+	targetRotY = map(mouseX, 0, width, -maxX, maxX);
+  targetRotX = map(mouseY, 0, height, -maxY, maxY);
   currentRotX = lerp(currentRotX, targetRotX, 0.1);
   currentRotY = lerp(currentRotY, targetRotY, 0.1);
-
   rotateY(currentRotY);
   rotateX(currentRotX);
   //end vibecoded section
 	model(bird);
-
 }
 
 
