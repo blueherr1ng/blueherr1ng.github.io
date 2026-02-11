@@ -18,6 +18,13 @@ let xrand;
 let yrand;
 let zrand;
 
+//begin vibecoded
+let targetRotX = 0;
+let targetRotY = 0;
+let currentRotX = 0;
+let currentRotY = 0;
+//end vibecoded
+
 function drawHat() {
 	if (hat) {
 		freeGeometry(hat);
@@ -193,14 +200,26 @@ function setup() {
 function draw() {
 	background(90, 180, 230);
 	noStroke();
-	rotateX(PI * -0.05);
-	rotateY(frameCount * 0.01);
+  
+  //begin vibecoded section
+	targetRotY = map(mouseX, 0, width, -PI/4, PI/4);
+  targetRotX = map(mouseY, 0, height, -PI/6, PI/6);
+
+  currentRotX = lerp(currentRotX, targetRotX, 0.1);
+  currentRotY = lerp(currentRotY, targetRotY, 0.1);
+
+  rotateY(currentRotY);
+  rotateX(currentRotX);
+  //end vibecoded section
 	model(bird);
-	//model(hat);
 
 }
 
-function mousePressed() {
-	drawBird();
-	//drawHat();
+
+//begin vibecoded
+function keyPressed() {
+  if (key === ' ') {
+    drawBird();
+  }
 }
+//end vibecoded
