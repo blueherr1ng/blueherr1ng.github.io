@@ -1,2 +1,2 @@
 # blueherr1ng.github.io
-my personal website [more details will be added later]
+personal website to showcase work and mini projects!
