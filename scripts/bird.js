@@ -191,7 +191,7 @@ function drawBird() {
 
 function setup() {
 	background(90, 180, 230);
-	createCanvas(windowWidth * 0.66, windowHeight, WEBGL);
+	createCanvas(windowWidth, windowHeight, WEBGL);
 	debugMode();
 	drawHat();
   rotateX(PI/2);
