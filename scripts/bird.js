@@ -201,7 +201,8 @@ function setup() {
 function draw() {
 	background(90, 180, 230);
 	noStroke();
-
+  push();
+  rotateY(-PI / 2);
   //begin vibecoded section
   let maxY = PI / 8;   // horizontal tilt limit
   let maxX = PI / 10;  // vertical tilt limit
@@ -213,6 +214,7 @@ function draw() {
   rotateX(currentRotX);
   //end vibecoded section
 	model(bird);
+  pop();
 }
 
 
