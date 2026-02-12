@@ -147,16 +147,16 @@ function drawBird() {
 			sphere(50);
 			pop();
 
-			if (browsExist == 0) {
-				push();
-				translate(-55, -70, side * 50 + (size * side));
-				rotateZ(random(PI * 0.2, PI * -0.2));
-				//rotateY(anglerand);
-				fill("black");
-				scale(1.2, 0.3, 1);
-				cylinder(10, 4);
-				pop();
-			}
+			// if (browsExist == 0) {
+			// 	push();
+			// 	translate(-55, -70, side * 50 + (size * side));
+			// 	rotateZ(random(PI * 0.2, PI * -0.2));
+			// 	//rotateY(anglerand);
+			// 	fill("black");
+			// 	scale(1.2, 0.3, 1);
+			// 	cylinder(10, 4);
+			// 	pop();
+			// }
 		}
 		pop();
 		// beak
@@ -164,7 +164,7 @@ function drawBird() {
 		fill(bc);
 		translate(-70, -40, 0)
 		rotateZ(PI);
-		cone(35 + (len * random(1, 3)), 15 + len * random(1, 1.4), 5);
+		cone(35+(len * random(1, 3)), 20+ (len * random(1, 1.4)), 5);
 		pop();
 
 		//tail
@@ -180,7 +180,7 @@ function drawBird() {
 		pop();
 		if (extraExist == 1) {
 			push();
-			translate(0, -r+5, 0);
+			translate(0, -r+10, 0);
 			scale(random(0.65, 1.4));
 			model(hat);
 			pop();
@@ -190,7 +190,16 @@ function drawBird() {
 
 function setup() {
 	background(90, 180, 230);
-	createCanvas(windowWidth, windowHeight, WEBGL);
+	let cnv = createCanvas(windowWidth, windowHeight, WEBGL);
+  
+  // Attach canvas to the bird container
+  cnv.parent('bird-container');
+
+  // Make the canvas fill the container and sit behind UI
+  cnv.style('position', 'absolute');
+  cnv.style('top', '0');
+  cnv.style('left', '0');
+  cnv.style('z-index', '0');
 	//debugMode();
 	drawHat();
   rotateX(PI/2);
