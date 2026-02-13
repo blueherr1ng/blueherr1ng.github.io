@@ -162,7 +162,7 @@ function drawBird() {
 		// beak
 		push();
 		fill(bc);
-		translate(-70, -40, 0)
+		translate(-75, -40, 0)
 		rotateZ(PI);
 		cone(35+(len * random(1, 3)), 20+ (len * random(1, 1.4)), 5);
 		pop();
@@ -180,7 +180,7 @@ function drawBird() {
 		pop();
 		if (extraExist == 1) {
 			push();
-			translate(0, -r+10, 0);
+			translate(0, -r+8, 0);
 			scale(random(0.65, 1.4));
 			model(hat);
 			pop();
@@ -208,9 +208,11 @@ function setup() {
 
 function draw() {
 	background(90, 180, 230);
+
 	noStroke();
   push();
   rotateY(PI / 2);
+  translate(0,50,0);
   //begin vibecoded section
   push();
   let maxTilt = PI / 4;  // how much it can lean
@@ -223,6 +225,7 @@ function draw() {
   //end vibecoded section
 	model(bird);
 
+  pop();
   pop();
 }
 
