@@ -23,6 +23,8 @@ let targetRotX = 0;
 let targetRotY = 0;
 let currentRotX = 0;
 let currentRotY = 0;
+let currentRotZ = 0;
+let targetRotZ = 0;
 //end vibecoded
 
 function drawHat() {
@@ -97,11 +99,8 @@ function drawBird() {
 		// scale(xrand,yrand,zrand);
 		fill(mc)
 		//fill("white")
-		scale(1 + xrand,
-			1 + yrand,
-			1 + zrand);
 		sphere(100);
-		r = 100 * (1 + yrand);
+		r = 100;
 		push();
 
 		pop();
@@ -148,24 +147,24 @@ function drawBird() {
 			sphere(50);
 			pop();
 
-			if (browsExist == 0) {
-				push();
-				translate(-55, -70, side * 50 + (size * side));
-				rotateZ(random(PI * 0.2, PI * -0.2));
-				//rotateY(anglerand);
-				fill("black");
-				scale(1.2, 0.3, 1);
-				cylinder(10, 4);
-				pop();
-			}
+			// if (browsExist == 0) {
+			// 	push();
+			// 	translate(-55, -70, side * 50 + (size * side));
+			// 	rotateZ(random(PI * 0.2, PI * -0.2));
+			// 	//rotateY(anglerand);
+			// 	fill("black");
+			// 	scale(1.2, 0.3, 1);
+			// 	cylinder(10, 4);
+			// 	pop();
+			// }
 		}
 		pop();
 		// beak
 		push();
 		fill(bc);
-		translate(-70, -40, 0)
+		translate(-75, -40, 0)
 		rotateZ(PI);
-		cone(35 + (len * random(1, 3)), 15 + len * random(1, 1.4), 5);
+		cone(35+(len * random(1, 3)), 20+ (len * random(1, 1.4)), 5);
 		pop();
 
 		//tail
@@ -181,7 +180,7 @@ function drawBird() {
 		pop();
 		if (extraExist == 1) {
 			push();
-			translate(0, -r + 5, 0);
+			translate(0, -r+8, 0);
 			scale(random(0.65, 1.4));
 			model(hat);
 			pop();
@@ -191,8 +190,17 @@ function drawBird() {
 
 function setup() {
 	background(90, 180, 230);
-	createCanvas(windowWidth, windowHeight, WEBGL);
-	debugMode();
+	let cnv = createCanvas(windowWidth, windowHeight, WEBGL);
+  
+  // Attach canvas to the bird container
+  cnv.parent('bird-container');
+
+  // Make the canvas fill the container and sit behind UI
+  cnv.style('position', 'absolute');
+  cnv.style('top', '0');
+  cnv.style('left', '0');
+  cnv.style('z-index', '0');
+	//debugMode();
 	drawHat();
   rotateX(PI/2);
 	drawBird();
@@ -200,23 +208,26 @@ function setup() {
 
 function draw() {
 	background(90, 180, 230);
+
 	noStroke();
   push();
-  rotateY(-PI / 2);
+  rotateY(PI / 2);
+  translate(0,50,0);
   //begin vibecoded section
-  let maxY = PI / 8;   // horizontal tilt limit
-  let maxX = PI / 10;  // vertical tilt limit
-	targetRotY = map(mouseX, 0, width, -maxX, maxX);
-  targetRotX = map(mouseY, 0, height, -maxY, maxY);
-  currentRotX = lerp(currentRotX, targetRotX, 0.1);
-  currentRotY = lerp(currentRotY, targetRotY, 0.1);
-  rotateY(currentRotY);
-  rotateX(currentRotX);
+  push();
+  let maxTilt = PI / 4;  // how much it can lean
+  targetRotY= map(mouseX, 0, width, -maxTilt, maxTilt);  // left/right lean
+  targetRotX = map(mouseY, 0, height, -maxTilt, maxTilt); // up/down tilt
+  currentRotX = lerp(currentRotX, targetRotX, 0.4);
+  currentRotY = lerp(currentRotY, targetRotY, 0.4);
+  rotateZ(-currentRotX);  // lean left/right
+  rotateY(currentRotY);  // tilt up/down  
   //end vibecoded section
 	model(bird);
+
+  pop();
   pop();
 }
-
 
 //begin vibecoded
 function keyPressed() {
