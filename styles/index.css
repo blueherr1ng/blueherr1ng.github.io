@@ -22,20 +22,20 @@ body {
 }
 
 #ui-layer {
-  position: fixed; /* fix it on top */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 100; /* above the canvas */
+  z-index: 100;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-bottom: 50px;
+  flex-direction: column; /* stack children vertically */
+  align-items: center; /* center horizontally */
+  padding-top: 120px; /* space below title */
   color: white;
   font-size: 1.2rem;
   font-family: "Roboto Mono", monospace;
-  pointer-events: auto; /* text still interactable */
+  pointer-events: auto;
 }
 
 #title {
@@ -69,9 +69,25 @@ body {
   white-space: nowrap;
 }
 
+#btn-back {
+  position: absolute;
+  top: 6.25%;
+  left: 2.5%;
+  transform: translateY(-50%); /* center vertically */
+  padding: 12px 24px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 1rem;
+  border: 2px solid rgb(90, 180, 230);
+  background-color: transparent;
+  color: rgb(90, 180, 230);
+  cursor: pointer;
+  z-index: 30;
+  transition: all 0.2s ease;
+}
+
 /*begin vibecoded*/
-#btn-about,
-#btn-works {
+#btn-left,
+#btn-right {
   position: absolute;
   top: 50%; /* vertically aligned with bird */
   transform: translateY(-50%); /* center vertically */
@@ -86,19 +102,31 @@ body {
   transition: all 0.2s ease;
 }
 
-#btn-about {
+#btn-left {
   left: 300px; /* distance from left edge */
 }
 
-#btn-works {
+#btn-right {
   right: 300px; /* distance from right edge */
 }
 
 /* Hover effect */
-#btn-about:hover,
-#btn-works:hover {
+#btn-back:hover,
+#btn-left:hover,
+#btn-right:hover {
   background-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-50%) scale(1.05);
 }
 
 /*end vibecoded*/
+
+#textsection {
+  padding: 12px 24px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 1rem;
+  border: 2px solid white;
+  color: white;
+  z-index: 21;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
