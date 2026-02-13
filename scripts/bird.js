@@ -178,13 +178,13 @@ function drawBird() {
 		}
 
 		pop();
-		if (extraExist == 1) {
-			push();
-			translate(0, -r+8, 0);
-			scale(random(0.65, 1.4));
-			model(hat);
-			pop();
-		}
+		// if (extraExist == 1) {
+		// 	push();
+		// 	translate(0, -r+8, 0);
+		// 	scale(random(0.65, 1.4));
+		// 	model(hat);
+		// 	pop();
+		// }
 	});
 }
 
@@ -201,7 +201,7 @@ function setup() {
   cnv.style('left', '0');
   cnv.style('z-index', '0');
 	//debugMode();
-	drawHat();
+	//drawHat();
   rotateX(PI/2);
 	drawBird();
 }
