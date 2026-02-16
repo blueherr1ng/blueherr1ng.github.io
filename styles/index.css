@@ -154,3 +154,118 @@ body {
 #links-section a {
   color: #fff9c4;
 }
+
+/*gemini aided css styling*/
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin-top: 40px;
+  padding-bottom: 60px;
+}
+.grid-item:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(90, 180, 230);
+}
+
+.item-header {
+  display: flex;
+  align-items: center; /* Centers the dot vertically with the text */
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.item-desc {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.item-tags {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.item-image {
+  width: 100%;
+  height: 220px; /* Fixed height for consistency across the grid */
+  /* background-color: rgba(
+    26,
+    114,
+    222,
+    0.559
+  ); Placeholder color while loading */
+  margin-bottom: 15px;
+  overflow: hidden; /* Clips the image to the box */
+  /*border-bottom: 1px solid rgba(255, 255, 255, 0.1);*/
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  object-fit: cover; /* Crops the image to fill the box without stretching */
+  transition: transform 0.3s ease; /* Smooth zoom on hover */
+}
+
+/* Fun interaction: Zoom the image slightly when hovering over the card */
+.grid-item:hover .item-image img {
+  transform: scale(1.05);
+}
+
+.grid-item.empty {
+  border-style: dashed;
+  opacity: 0.6;
+}
+/* The Key/Legend Styling */
+.legend {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.9rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* The Dot Base Styling */
+.dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Color Tags */
+.red {
+  background-color: #ff4c43;
+}
+.green {
+  background-color: #57ff81;
+}
+.blue {
+  background-color: #222dff;
+}
+
+/* Positioning the dot inside the card */
+.grid-item {
+  position: relative;
+  padding: 20px;
+}
+
+.grid-item .dot {
+  position: static; /* Resets it from the top-right pin */
+  margin-right: 12px; /* Adds space between the dot and the text */
+  flex-shrink: 0; /* Prevents the dot from squishing on small screens */
+}
+
+/*gemini aided css styling*/

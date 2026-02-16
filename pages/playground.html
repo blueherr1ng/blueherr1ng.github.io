@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../src/roundbird.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="../styles/index.css" />
+    <script type="text/javascript" src="../scripts/p5.min.js"></script>
+    <script type="text/javascript" src="../scripts/bird.js"></script>
+    <title>mirabelle feng</title>
+  </head>
+  <body>
+    <!--start of ui-->
+    <div id="ui-layer">
+      <p id="title">playground</p>
+      <button id="btn-back" onclick="location.href = 'works.html'">
+        [ back to works ]
+      </button>
+<!--rgb funny legend here-->
+      <div class="legend">
+        <div class="legend-item"><span class="dot red"></span> art-leaning</div>
+        <div class="legend-item">
+          <span class="dot green"></span> interdisciplinary
+        </div>
+        <div class="legend-item"><span class="dot blue"></span> cs-leaning</div>
+      </div>
+<!--grid begins here-->
+      <div class="grid-container">
+        <!--snooks-->
+        <div class="grid-item">
+          <div class="item-header">
+            <span class="dot green"></span> snooks & ladders
+          </div>
+          <p class="item-desc">
+            procedurally generated wallpaper using bfs based wave function
+            collapse algorithm.
+          </p>
+          <div class="item-image">
+            <img src="../src/snooksladders.gif" alt="snooks n ladders gif" />
+          </div>
+          <div class="item-tags">
+            javascript | wave function collapse | p5js
+          </div>
+        </div>
+        <!--birds-->
+        <div class="grid-item">
+          <div class="item-header">
+            <span class="dot green"></span> bird generator
+          </div>
+          <p class="item-desc">
+            random parameter based simple rotating 3d bird generator.
+          </p>
+          <div class="item-image">
+            <img src="../src/birdgen.gif" alt="bird generating gif" />
+          </div>
+          <div class="item-tags">javascript | p5js | webgl</div>
+        </div>
+        <!--item-->
+        <!-- <div class="grid-item">
+          <div class="item-header">
+            <span class="dot green"></span> bird generator
+          </div>
+          <p class="item-desc">
+            random parameter based simple rotating 3d bird generator.
+          </p>
+          <div class="item-tags">javascript | p5js | webgl</div>
+        </div> -->
+        <!--in progress-->
+        <!-- <div class="grid-item empty">
+          <div class="item-header">+ New Sketch</div>
+          <p class="item-desc">
+            Currently exploring L-systems and fractals[cite: 31].
+          </p> -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
