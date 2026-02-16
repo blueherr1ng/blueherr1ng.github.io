@@ -122,11 +122,35 @@ body {
 
 #textsection {
   padding: 12px 24px;
+  background-color: rgb(90, 180, 230);
   font-family: "Roboto Mono", monospace;
-  font-size: 1rem;
+  font-size: 1.2rem;
   border: 2px solid white;
   color: white;
   z-index: 21;
   justify-content: center;
   transition: all 0.2s ease;
+}
+
+.interests-column {
+  max-width: 500px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.custom-link {
+  color: #fff9c4;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.custom-link:hover {
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Subtle glow effect */
+}
+
+#links-section a {
+  color: #fff9c4;
 }
