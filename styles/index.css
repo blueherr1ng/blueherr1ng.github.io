@@ -219,7 +219,7 @@ body {
 }
 
 .grid-item.empty {
-  border-style: dashed;
+  /*border-style: dashed;*/
   opacity: 0.6;
 }
 /* The Key/Legend Styling */
