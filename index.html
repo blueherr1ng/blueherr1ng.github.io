@@ -1,33 +1,211 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="src/roundbird.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" type="text/css" href="styles/index.css" />
-    <script type="text/javascript" src="scripts/p5.min.js"></script>
-    <script type="text/javascript" src="scripts/bird.js"></script>
-    <title>mirabelle feng</title>
-  </head>
-  <body>
-    <div id="bird-container"></div>
-    <div id="ui-layer">
-      <p id="title">𓆝 mirabelle feng 𓆞</p>
-      <p id="caption">[ press spacebar for new bird ]</p>
-      <!--begin vibecoded-->
-      <button id="btn-left" onclick="location.href = 'pages/about.html'">
-        [ about ]
-      </button>
-      <button id="btn-right" onclick="location.href = 'pages/works.html'">
-        [ works ]
-      </button>
-      <!--end vibecoded-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mirabelle feng</title>
+<meta name="description" content="Mirabelle Feng — computer science and art at Carnegie Mellon. Renderers, games, and interactive work.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="c"></canvas>
+
+<div id="intro">
+  <h1>hi, i'm mirabelle</h1>
+  <p>
+    <a href="assets/resume.pdf">resume</a>
+    <a href="mailto:mirabelf@andrew.cmu.edu">email</a>
+    <a href="https://blueherr1ng.itch.io/">itch.io</a>
+    <a href="https://github.com/blueherr1ng">github</a>
+  </p>
+</div>
+
+<div id="drive" aria-hidden="true"></div>
+<div id="plate" aria-hidden="true"></div>
+
+<main id="content">
+
+  <section>
+    <h2>projects</h2>
+
+    <article>
+      <h3>software rasterizer</h3>
+      <p class="stack">c++ · 15-362 computer graphics</p>
+
+      <div class="shots column" aria-label="software rasterizer renders">
+        <a href="assets/work/s3d-1.png" target="_blank" rel="noopener">
+          <img class="crisp" src="assets/work/s3d-1.png" loading="lazy"
+               alt="Line and triangle rasterization, with flat, smooth, and perspective-correct shading side by side.">
+        </a>
+        <a href="assets/work/s3d-2.png" target="_blank" rel="noopener">
+          <img class="crisp" src="assets/work/s3d-2.png" loading="lazy"
+               alt="Bilinear and trilinear sampling compared, with mip level selected by distance.">
+        </a>
+      </div>
+
+      <p>&gt; built a full software rasterization pipeline in c++: scene-graph transforms, diamond-exit line drawing, and bounding-box triangle coverage with top-left tie-breaking, plus depth testing and alpha blending</p>
+      <p>&gt; implemented perspective-correct barycentric interpolation with uv derivatives, trilinear mip-mapping (generation, sampling, and lod selection), and configurable supersampling with a custom sample pattern</p>
+      <p>&gt; implementing geometry and mesh operations: adding, deleting, and transforming vertices, edges, and faces</p>
+    </article>
+
+    <article>
+      <h3>file fisher</h3>
+      <p class="stack">unity · c# · pixel art</p>
+
+      <div class="shots" tabindex="0" aria-label="file fisher in action">
+        <img class="crisp" src="assets/work/filefisher.gif" loading="lazy"
+             alt="The cat catches a file and drops it into the basket.">
+      </div>
+
+      <p>&gt; published a 2d pixel-art desktop idler in which a cat pulls random files out of the user's downloads folder on a user-set interval, as passive file management for people who find organizing files daunting</p>
+      <p>&gt; built the basket ui (open, remove, or send a caught file to the trash) and a settings panel controlling fishing frequency; shipped a macos build to itch.io</p>
+      <p>&gt; solo project: wrote all c# game logic and drew all pixel art assets</p>
+      <p class="links"><a href="https://blueherr1ng.itch.io/file-fisher">play here</a></p>
+    </article>
+
+    <article>
+      <h3>fish.bowl</h3>
+      <p class="stack">touchdesigner · mediapipe</p>
+
+      <video controls playsinline preload="metadata"
+             poster="assets/work/fishbowl.png">
+        <source src="assets/work/fishbowl.mp4" type="video/mp4">
+        <a href="assets/work/fishbowl.mp4">download the video</a>
+      </video>
+
+      <p>&gt; built a hand-tracked interactive installation: a clenched fist spawns a fish into a 3d bowl, and an extended index finger drives a directional "wind" force that pushes fish through the water and can launch them out of the bowl</p>
+      <p>&gt; authored the full node network, including the 3d scene, models, forces, and gravity restore behavior, on top of the mediapipe hand-landmark library</p>
+      <!-- <p class="links"><a href="assets/work/fishbowl.toe">download the .toe file</a></p> -->
+    </article>
+  </section>
+
+
+    <section>
+    <h2>openprocessing</h2>
+    <p> p5.js sketches, see more at my 
+       <a href="https://openprocessing.org/user/blueherr1ng">openprocessing</a>.</p>
+
+    <div class="sketches">
+
+      <figure>
+        <a href="https://openprocessing.org/@blueherr1ng/2999054">
+          <img src="assets/work/pigeon.gif" loading="lazy"
+               alt="Pigeons walking across the screen in silhouette.">
+        </a>
+        <figcaption>
+          <a href="https://openprocessing.org/@blueherr1ng/2999054">bread tastes better than key</a>
+          <p>&gt; used the bmwalker.js library to send pigeons walking across the screen</p>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <a href="https://openprocessing.org/@blueherr1ng/2872890">
+          <img src="assets/work/snooks.png" loading="lazy"
+               alt="A tiling of snake-goose tiles filling the canvas.">
+        </a>
+        <figcaption>
+          <a href="https://openprocessing.org/@blueherr1ng/2872890">snooks and ladders</a>
+          <p>&gt; implemented wave function collapse to produce tilings of "snake geese"</p>
+          <p>&gt; best on desktop, fullscreen</p>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <a href="https://openprocessing.org/@blueherr1ng/3007629">
+          <img src="assets/work/dithermethis.gif" loading="lazy"
+               alt="Two spheres reduced to three flat colours with thresholding and a dithering pattern.">
+        </a>
+        <figcaption>
+          <a href="https://openprocessing.org/@blueherr1ng/3007629">dithering and 60-30-10 composition</a>
+          <p>&gt; wrote glsl shaders that threshold an image by luminance into 60% one colour, 30% a second, and 10% an accent</p>
+          <p>&gt; built a palette generator in oklch</p>
+          <p>&gt; added a bayer dithering matrix for depth in the thresholded image</p>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <a href="https://openprocessing.org/@blueherr1ng/2868935">
+          <img src="assets/work/birdrotate.gif" loading="lazy"
+               alt="a random bird generator">
+        </a>
+        <figcaption>
+          <a href="https://openprocessing.org/@blueherr1ng/2868935">dithering and 60-30-10 composition</a>
+          <p>&gt; wrote a bird generator using webgl</p>
+        </figcaption>
+      </figure>
+
     </div>
-  </body>
+  </section>
+
+
+  <section>
+    <h2>experience</h2>
+
+    <article>
+      <h3>teaching assistant, 15-122</h3>
+      <p class="stack">carnegie mellon · jan 2026 – now</p>
+      <p>&gt; lead two weekly recitations and hold office hours for a course serving 1000+ students annually, teaching c programming, data structures, algorithms, and systems concepts</p>
+      <p>&gt; serve as grading group lead, coordinating tas during staff grading sessions; study rubrics in advance, resolve grading questions, and calibrate scoring to the concepts assessed</p>
+      <p>&gt; grade exams and assignments, debug student c code during office hours, and playtest quizzes and homeworks to identify correctness and clarity issues before release</p>
+    </article>
+
+    <article>
+      <h3>software developer, scottylabs</h3>
+      <p class="stack">carnegie mellon · aug 2025 – may 2026</p>
+      <p>&gt; built modular, reusable react and tailwind css components for a campus social app prototype, supporting rapid feature iteration across the team</p>
+      <p>&gt; implemented responsive ui from figma files in collaboration with the design team</p>
+    </article>
+  </section>
+
+  <section>
+    <h2>education</h2>
+    <article>
+      <h3>carnegie mellon university</h3>
+      <p class="stack">b.s. computer science and arts · 2025 – 2029</p>
+      <p>coursework: 15-362 computer graphics, 15-210 parallel &amp; sequential data structures and algorithms, 15-251 great theoretical ideas in cs, 15-150 functional programming, 15-122 imperative computation, 21-241 matrices &amp; linear transformations, 60-120 introduction to digital media, 60-212 creative coding / interactivity and computation</p>
+    </article>
+  </section>
+
+
+  <section>
+    <h2>skills</h2>
+    <dl class="skills">
+      <dt>languages</dt>
+      <dd>c · c++ · c# · python · sml · javascript · sql</dd>
+
+      <dt>graphics</dt>
+      <dd>webgl · p5.js · glsl · three.js · unity · touchdesigner · mediapipe</dd>
+
+      <dt>design</dt>
+      <dd>blender · figma · photoshop · illustrator · indesign · premiere</dd>
+
+      <dt>tools</dt>
+      <dd>git · vs code · linux shell</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>elsewhere</h2>
+    <p class="stacked">
+      <a href="assets/resume.pdf">resume (pdf)</a>
+      <a href="mailto:mirabelf@andrew.cmu.edu">mirabelf@andrew.cmu.edu</a>
+      <a href="https://blueherr1ng.itch.io/">itch.io</a>
+      <a href="https://github.com/blueherr1ng">github</a>
+      <a href="https://www.linkedin.com/in/mirabelle-feng-81496735b/">linkedin</a>
+    </p>
+  </section>
+
+</main>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+}}
+</script>
+
+<script type="module" src="main.js"></script>
+
+</body>
 </html>

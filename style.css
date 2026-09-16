@@ -1,0 +1,162 @@
+:root{
+  --cream:#f2e8d5;      /* the screen turns this colour, and the page is this colour */
+  --ink:#2b2318;
+  --muted:#7a6a54;
+  --rule:#d9cbb0;
+  --accent:#b5642a;
+
+  --measure:34rem;      /* text column */
+  --media:56rem;        /* media may be wider than the text */
+}
+*{ box-sizing:border-box; }
+html,body{ margin:0; }
+body{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(1rem,.6rem+.55vw,1.14rem);
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--cream);
+}
+
+#c{ position:fixed; inset:0; display:block; z-index:0; }
+
+#intro{
+  position:fixed; z-index:2; left:6vw; top:50%; transform:translateY(-50%);
+  max-width:min(32rem,42vw); color:#2b2318;
+}
+#intro h1{ margin:0 0 .8rem; font-size:clamp(2rem,1rem+3vw,3.4rem); font-weight:400; line-height:1.05; }
+#intro p{ margin:0; }
+
+a{
+  color:inherit;
+  text-decoration-line:underline;
+  text-decoration-color:var(--accent);
+  text-underline-offset:.22em;
+}
+a:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+#intro a{ margin-right:1.2rem; }
+
+/* drives the camera move */
+#drive{ height:300vh; }
+
+/* the match cut */
+#plate{
+  position:fixed; inset:0; z-index:3;
+  background:var(--cream); opacity:0; pointer-events:none;
+}
+
+#content{
+  position:relative; z-index:4;
+  background:var(--cream);
+  opacity:0; pointer-events:none;
+  transition:opacity .6s ease .3s;      /* the delay after arrival */
+  padding:14vh 6vw 18vh; min-height:100vh;
+}
+#content.on{ opacity:1; pointer-events:auto; }
+
+/* Text keeps a readable measure. Media gets its own, wider limit below. */
+#content section{ max-width:var(--media); margin:0 0 4.5rem; }
+#content h2{
+  margin:0 0 1.8rem; padding-bottom:.4rem;
+  border-bottom:1px solid var(--rule);
+  font-size:.95rem; font-weight:400; font-style:italic; color:var(--muted);
+  max-width:var(--measure);
+}
+article{ margin-bottom:3.4rem; }
+article h3{ margin:0 0 .15rem; font-size:1.35em; font-weight:400; }
+.stack{ margin:0 0 .7rem; font-style:italic; font-size:.9em; color:var(--muted); }
+article p{ margin:0 0 .7rem; max-width:var(--measure); }
+.stacked a{ display:block; margin-bottom:.35rem; }
+.links a{ margin-right:1.1rem; }
+
+/* ---------- media ----------
+   Images are sized by WIDTH; height follows the file's own shape.
+   Never set both, or the picture is squashed.                        */
+.shots{
+  display:flex;
+  gap:.6rem;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  margin:1.1rem 0;
+  padding-bottom:.5rem;
+  max-width:min(var(--media), 88vw);
+}
+.shots img,
+.shots video{
+  flex:0 0 auto;
+  width:min(100%, 26rem);        /* width of each item in a row of several */
+  height:auto;
+  display:block;
+  scroll-snap-align:start;
+  background:#e2d6bb;
+}
+/* a single item fills the media column instead of sitting in a strip */
+.shots:has(> :only-child) img,
+.shots:has(> :only-child) video,
+.shots:has(> a:only-child) img{ width:100%; }
+
+.shots a{ flex:0 0 auto; display:block; text-decoration:none; }
+.shots a img{ width:min(100%, 26rem); }
+.shots:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+
+/* Put class="crisp" on pixel art and on aliasing comparisons, so the
+   browser does not smooth away the very thing the image is showing. */
+.crisp{ image-rendering:pixelated; }
+
+/* stand-alone video, outside a .shots strip */
+#content video{
+  width:100%; max-width:min(var(--media), 88vw);
+  height:auto; display:block; margin:1.1rem 0;
+  background:#e2d6bb;
+}
+
+figcaption{ margin-top:.45rem; font-size:.85em; font-style:italic; color:var(--muted); }
+
+@media (prefers-reduced-motion:no-preference){
+  .shots{ scroll-behavior:smooth; }
+}
+
+/* phones and reduced motion: no 3D at all */
+body.flat #c, body.flat #drive, body.flat #plate{ display:none; }
+body.flat #intro{ position:static; transform:none; max-width:none; padding:9vh 6vw 2vh; }
+body.flat #content{ opacity:1; pointer-events:auto; transition:none; padding:2vh 6vw 12vh; min-height:0; }
+
+.shots.column{
+  display:block;
+  overflow:visible;
+  scroll-snap-type:none;
+}
+.shots.column a,
+.shots.column img{
+  width:100%;
+  display:block;
+  margin:0 0 .7rem;
+}
+
+.sketches{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(19rem, 1fr));
+  gap:2.4rem 1.6rem;
+  max-width:min(var(--media), 88vw);
+  margin:1.4rem 0 0;
+}
+.sketches figure{ margin:0; }
+.sketches img{
+  width:100%;
+  height:auto;              /* no crop — each sketch keeps its own shape */
+  display:block;
+  background:#e2d6bb;
+}
+.sketches figcaption{
+  margin-top:.6rem;
+  font-style:normal;
+  font-size:1em;
+  color:var(--ink);
+}
+.sketches figcaption a{ font-size:1.05em; }
+.sketches p{
+  margin:.4rem 0 0;
+  font-size:.9em;
+  color:var(--muted);
+  max-width:none;           /* the section measure does not apply in a cell */
+}
